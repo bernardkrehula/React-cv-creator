@@ -18,11 +18,13 @@ function App() {
           <form>
             <h2>Education</h2>
           </form>
-          <SingleBtn>Add Education</SingleBtn>
+          <SingleBtn variation='add'>Add Education</SingleBtn>
           <form>
             <h2>Experience</h2>
           </form>
-          <SingleBtn>Add Experience</SingleBtn>
+          <SingleBtn variation='add'>Add Experience</SingleBtn>
+          <SingleBtn variation='preview'>Preview</SingleBtn>
+          <SingleBtn variation='reset'>Reset</SingleBtn>
         </div>
       </div>
     </>
