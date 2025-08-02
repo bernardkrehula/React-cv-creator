@@ -1,10 +1,37 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import SingleBtn from './SingleBtn'
 
 function App() {
-  
+  const [ formInfo, setFormInfo ] = useState([]);
+  const personalInfo = [
+    {
+      id: 1,
+      placeHolder: 'First Name',
+      value: ''
+    }
+  ]
+  const education = [
+    {
+      id: 1,
+      placeHolder: '',
+      value: ''
+    }
+  ]
+  const experience = [
+    {
+      id: 1,
+      placeHolder: '',
+      value: ''
+    }
+  ]
 
+    
+
+  useEffect(() => {
+    if(formInfo.length === 0) setFormInfo(prev => [...prev, personalInfo, education, experience]);
+  },[]);
+  
   return (
     <>
       <div className='main'>

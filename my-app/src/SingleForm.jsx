@@ -2,7 +2,9 @@ import './SingleForm.css'
 
 const SingleForm = () => {
     return(
-        <form></form>
+        <form>
+            <input></input>
+        </form>
     )
 }
 
