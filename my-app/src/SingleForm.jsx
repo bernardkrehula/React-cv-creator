@@ -1,5 +1,5 @@
-import './SingleForm.css'
 import { useRef, useState, useEffect } from 'react';
+import { formData } from './FormData';
 
 const SingleForm = ({name}) => {
     const [ formInfo, setFormInfo ] = useState({});
@@ -17,7 +17,7 @@ const SingleForm = ({name}) => {
 
     useEffect(() => {
     if(!initialized.current) {
-        setFormInfo({personal, education, experience});
+        setFormInfo(formData);
         initialized.current = true;
     }
     },[]);

@@ -1,6 +1,6 @@
 
-const formData = () => {
-    const personal= [
+export const formData = {
+    personal: [
         {
             id: 1,
             placeHolder: 'First Name',
@@ -41,67 +41,64 @@ const formData = () => {
             placeHolder: 'Description',
             value: ''
         }
-    ]
-    const education = [
+    ],
+    education: [
         {
             id: 1,
-            placeHolder: '',
+            placeHolder: 'University name',
             value: ''
         },
         {
             id: 1,
-            placeHolder: '',
+            placeHolder: 'City',
             value: ''
         },
         {
             id: 1,
-            placeHolder: '',
+            placeHolder: 'Degree',
             value: ''
         },
         {
             id: 1,
-            placeHolder: '',
+            placeHolder: 'Subject',
             value: ''
         },
         {
             id: 1,
-            placeHolder: '',
+            placeHolder: 'From (dd/mm/yy)',
             value: ''
         },
         {
             id: 1,
-            placeHolder: '',
+            placeHolder: 'To (dd/mm/yy)',
             value: ''
         }
-    ]
-    const experience = [
+    ],
+    experience: [
         {
         id: 1,
-        placeHolder: '',
+        placeHolder: 'Position',
         value: ''
         },
         {
         id: 1,
-        placeHolder: '',
+        placeHolder: 'Company',
         value: ''
         },
         {
         id: 1,
-        placeHolder: '',
+        placeHolder: 'City',
         value: ''
         },
         {
         id: 1,
-        placeHolder: '',
+        placeHolder: 'From (dd/mm/yy)',
         value: ''
         },
         {
         id: 1,
-        placeHolder: '',
+        placeHolder: 'To (dd/mm/yy)',
         value: ''
         }
     ]
-
-}
-
-export default formData;
+};
