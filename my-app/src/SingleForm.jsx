@@ -5,32 +5,14 @@ const SingleForm = ({name}) => {
     const [ formInfo, setFormInfo ] = useState({});
     const initialized = useRef(false);
     
-    const personal= [
-        {
-        id: 1,
-        placeHolder: 'First Name',
-        value: ''
-        }
-    ]
-    const education = [
-        {
-        id: 1,
-        placeHolder: '',
-        value: ''
-        }
-    ]
-    const experience = [
-        {
-        id: 1,
-        placeHolder: '',
-        value: ''
-        }
-    ]
+    
     const setInfo = () => {
-        console.log(formInfo['personal'])
+        console.log(formInfo)
+        
     }
     setTimeout(() => {
         setInfo()
+        
     },1000)
 
     useEffect(() => {
@@ -43,16 +25,16 @@ const SingleForm = ({name}) => {
    
     return(
         <form>
-           {/*  {formInfo.length != 0 ? formInfo[name].map((info, index) => {
+            {initialized.current ? formInfo[name].map((info, index) => {
                 const { id, placeHolder, value} = info;
-        
+                
                 return(
                     <input key={index} placeholder={placeHolder}></input>
                 )
             })
             :
             ''
-            } */}
+            }
         </form>
     )
 }

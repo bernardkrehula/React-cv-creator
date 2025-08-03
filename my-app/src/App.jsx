@@ -12,14 +12,14 @@ function App() {
           <h1>CV CREATOR</h1>
         </div>
         <div className='information'>
-          <SingleForm name='personal'></SingleForm>
-          <form>
-            <h2>Personal information</h2>
-          </form>
-          <form>
-            <h2>Education</h2>
-          </form>
+          <h2>Personal information</h2>
+          <SingleForm name='personal' />
+          <h2>Education</h2>
+          <SingleForm name='education'/>
+          <SingleBtn variation='delete'>Delete</SingleBtn>
           <SingleBtn variation='add'>Add Education</SingleBtn>
+         
+          
           <form>
             <h2>Experience</h2>
           </form>
