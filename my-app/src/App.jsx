@@ -4,6 +4,11 @@ import SingleBtn from './SingleBtn'
 import SingleForm from './SingleForm';
 
 function App() {
+  const [ formName, setFormName ] = useState('');
+
+  const setNameForForm = (name) => {
+    setFormName(name);
+  }
   
   return (
     <>
@@ -15,12 +20,12 @@ function App() {
           <h2>Personal information</h2>
           <SingleForm name='personal' />
           <h2>Education</h2>
-          <SingleForm name='education'/>
-          <SingleBtn variation='delete'>Delete</SingleBtn>
+          <SingleForm name='education' formName={formName}/>
+          <SingleBtn variation='delete' onClick={() => setNameForForm('education')}>Delete</SingleBtn>
           <SingleBtn variation='add'>Add Education</SingleBtn>
           <h2>Experience</h2>
-          <SingleForm name='experience'/>
-          <SingleBtn variation='add'>Add Experience</SingleBtn>
+          <SingleForm name='experience' formName={formName}/>
+          <SingleBtn variation='add' onClick={() => setNameForForm('experience')}>Add Experience</SingleBtn>
           <SingleBtn variation='preview'>Preview</SingleBtn>
           <SingleBtn variation='reset'>Reset</SingleBtn>
         </div>

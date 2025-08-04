@@ -1,19 +1,9 @@
 import { useRef, useState, useEffect } from 'react';
 import { formData } from './FormData';
 
-const SingleForm = ({name}) => {
+const SingleForm = ({name, formName}) => {
     const [ formInfo, setFormInfo ] = useState({});
     const initialized = useRef(false);
-    
-    
-    const setInfo = () => {
-        console.log(formInfo)
-        
-    }
-    setTimeout(() => {
-        setInfo()
-        
-    },1000)
 
     useEffect(() => {
     if(!initialized.current) {
@@ -22,7 +12,14 @@ const SingleForm = ({name}) => {
     }
     },[]);
 
-   
+    useEffect(() => {
+        setFormInfo(prev => {
+        const updated = { ...prev };
+        delete updated[formName];
+        return updated;
+    });
+    }, [formName])
+      
     return(
         <form>
             {initialized.current ? formInfo[name].map((info, index) => {

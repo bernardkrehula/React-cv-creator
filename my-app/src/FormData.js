@@ -7,37 +7,37 @@ export const formData = {
             value: ''
         },
         {
-            id: 1,
+            id: 2,
             placeHolder: 'Last Name',
             value: ''
         },
         {
-            id: 1,
+            id: 3,
             placeHolder: 'Title',
             value: ''
         },
         {
-            id: 1,
+            id: 4,
             placeHolder: 'Photo',
             value: ''
         },
         {
-            id: 1,
+            id: 5,
             placeHolder: 'Adress',
             value: ''
         },
         {
-            id: 1,
+            id: 6,
             placeHolder: 'Phone number',
             value: ''
         },
         {
-            id: 1,
+            id: 7,
             placeHolder: 'Email',
             value: ''
         },
         {
-            id: 1,
+            id: 8,
             placeHolder: 'Description',
             value: ''
         }
@@ -49,27 +49,27 @@ export const formData = {
             value: ''
         },
         {
-            id: 1,
+            id: 2,
             placeHolder: 'City',
             value: ''
         },
         {
-            id: 1,
+            id: 3,
             placeHolder: 'Degree',
             value: ''
         },
         {
-            id: 1,
+            id: 4,
             placeHolder: 'Subject',
             value: ''
         },
         {
-            id: 1,
+            id: 5,
             placeHolder: 'From (dd/mm/yy)',
             value: ''
         },
         {
-            id: 1,
+            id: 6,
             placeHolder: 'To (dd/mm/yy)',
             value: ''
         }
@@ -81,22 +81,22 @@ export const formData = {
         value: ''
         },
         {
-        id: 1,
+        id: 2,
         placeHolder: 'Company',
         value: ''
         },
         {
-        id: 1,
+        id: 3,
         placeHolder: 'City',
         value: ''
         },
         {
-        id: 1,
+        id: 4,
         placeHolder: 'From (dd/mm/yy)',
         value: ''
         },
         {
-        id: 1,
+        id: 5,
         placeHolder: 'To (dd/mm/yy)',
         value: ''
         }
