@@ -31,8 +31,19 @@ function App() {
 
   const updateFormInfo = (formKey, fieldName, value) => {
    setFormInfo(prev => ({...prev, [formKey]: prev[formKey].map(info => info.name === fieldName ? {...info, value} : info)})); 
-    console.log(formInfo[formKey])
   };
+  const deleteFormInfoField = (name) => {
+    setFormInfo(prev => {
+      const updated = {...prev};
+
+      delete updated[name];
+
+      return updated;
+    })
+  }
+  setTimeout(() => {
+    console.log(formInfo)
+  },1000)
 
   return (
     <>
@@ -48,8 +59,8 @@ function App() {
             .filter((key) => key.startsWith('education'))
             .map((key) => (
             <div key={key}>
-              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
-              <SingleBtn variation='delete' >Delete</SingleBtn>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo} deleteFormInfoField={deleteFormInfoField}/>
+              <SingleBtn variation='delete' onClick={() => deleteFormInfoField(key)}>Delete</SingleBtn>
             </div>
             ))}
           <SingleBtn variation='add' type='submit' onClick={() => addInfo('education')}>Add Education</SingleBtn>
@@ -58,12 +69,12 @@ function App() {
             .filter((key) => key.startsWith('experience'))
             .map((key) => (
             <div key={key}>
-              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
-              <SingleBtn variation='delete' >Delete</SingleBtn>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo} deleteFormInfoField={deleteFormInfoField}/>
+              <SingleBtn variation='delete' onClick={() => deleteFormInfoField(key)} type='submit'>Delete</SingleBtn>
             </div>
             ))}
           <SingleBtn variation='add' onClick={() => addInfo('experience')}>Add Experience</SingleBtn>
-          <SingleBtn variation='preview'>Preview</SingleBtn>
+          <SingleBtn variation='preview' type='submit'>Preview</SingleBtn>
           <SingleBtn variation='reset'>Reset</SingleBtn>
         </div>
       </div>
