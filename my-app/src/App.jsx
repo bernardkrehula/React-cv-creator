@@ -17,8 +17,10 @@ function App() {
   },[]);
   
   const addInfo = (name) => {
-    const info = name + (index.current + 1)
+    index.current += 1;
+    const info = name + index.current
     setFormInfo(prev => ({...prev, [info]: formData[name]}));
+    console.log(formInfo)
   }
 
     
@@ -30,13 +32,26 @@ function App() {
         </div>
         <div className='information'>
           <h2>Personal information</h2>
-          <SingleForm name='personal' formInfo={formInfo} initialized={initialized}/>
+          <SingleForm name='personal' formInfo={formInfo} initialized={initialized} index={index}/>
           <h2>Education</h2>
-          <SingleForm name='education' formInfo={formInfo} initialized={initialized}/>
-          <SingleBtn variation='delete' >Delete</SingleBtn>
-          <SingleBtn variation='add' type='submit'  onClick={() => addInfo('education')}>Add Education</SingleBtn>
+          {Object.keys(formInfo)
+            .filter((key) => key.startsWith('education'))
+            .map((key) => (
+            <div key={key}>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} index={index}/>
+              <SingleBtn variation='delete' >Delete</SingleBtn>
+            </div>
+            ))}
+          <SingleBtn variation='add' type='submit' onClick={() => addInfo('education')}>Add Education</SingleBtn>
           <h2>Experience</h2>
-          <SingleForm name='experience' formInfo={formInfo} initialized={initialized}/>
+          {Object.keys(formInfo)
+            .filter((key) => key.startsWith('experience'))
+            .map((key) => (
+            <div key={key}>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} index={index}/>
+              <SingleBtn variation='delete' >Delete</SingleBtn>
+            </div>
+            ))}
           <SingleBtn variation='add' onClick={() => addInfo('experience')}>Add Experience</SingleBtn>
           <SingleBtn variation='preview'>Preview</SingleBtn>
           <SingleBtn variation='reset'>Reset</SingleBtn>

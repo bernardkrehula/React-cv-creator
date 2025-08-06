@@ -1,9 +1,10 @@
 
-const SingleForm = ({name, formInfo, initialized}) => {
+const SingleForm = ({name, formInfo, index, initialized}) => {
+
+    const information = name + index.current;
     
-    const handleOnChange = (e) => {
-        
-        console.log('radi', e.target.value)
+    const handleOnChange = (e) => {        
+        console.log(formInfo[name && information])
     }
       
     return(
