@@ -7,7 +7,8 @@ import { formData } from './FormData';
 function App() {
   const [ formInfo, setFormInfo ] = useState({});
   const initialized = useRef(false);
-  const index = useRef(0);
+  const indexEducation = useRef(0);
+  const indexExperience = useRef(0);
 
   useEffect(() => {
   if(!initialized.current) {
@@ -17,13 +18,17 @@ function App() {
   },[]);
   
   const addInfo = (name) => {
-    index.current += 1;
-    const info = name + index.current
-    setFormInfo(prev => ({...prev, [info]: formData[name]}));
-    console.log(formInfo)
+    if(name === 'education') {
+      indexEducation.current += 1;
+      const info = name + indexEducation.current;
+      setFormInfo(prev => ({ ...prev, [info]: formData[name]}));
+    } else if(name === 'experience') {
+      indexExperience.current += 1;
+      const info = name + indexExperience.current;
+      setFormInfo(prev => ({ ...prev, [info]: formData[name]}));
+    }
   }
 
-    
   return (
     <>
       <div className='main'>
@@ -32,13 +37,13 @@ function App() {
         </div>
         <div className='information'>
           <h2>Personal information</h2>
-          <SingleForm name='personal' formInfo={formInfo} initialized={initialized} index={index}/>
+          <SingleForm name='personal' formInfo={formInfo} initialized={initialized}/>
           <h2>Education</h2>
           {Object.keys(formInfo)
             .filter((key) => key.startsWith('education'))
             .map((key) => (
             <div key={key}>
-              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} index={index}/>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized}/>
               <SingleBtn variation='delete' >Delete</SingleBtn>
             </div>
             ))}
@@ -48,7 +53,7 @@ function App() {
             .filter((key) => key.startsWith('experience'))
             .map((key) => (
             <div key={key}>
-              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} index={index}/>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized}/>
               <SingleBtn variation='delete' >Delete</SingleBtn>
             </div>
             ))}
