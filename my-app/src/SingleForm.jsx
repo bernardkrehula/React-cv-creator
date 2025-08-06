@@ -2,17 +2,18 @@
 const SingleForm = ({name, formInfo, initialized}) => {
 
 
-        const handleOnChange = (e) => {        
+    const handleOnChange = (e) => { 
+        const {name, value} = e.target;       
         console.log(name)
     }
       
     return(
         <form>
             {initialized.current ? formInfo[name].map((info, index) => {
-                const { id, placeHolder, value} = info;
+                const { id, name, placeHolder, value} = info;
                 
                 return(
-                    <input key={index} placeholder={placeHolder} onChange={handleOnChange}></input>
+                    <input key={id} name={name} placeholder={placeHolder} onChange={handleOnChange}></input>
                 )
             })
             :
