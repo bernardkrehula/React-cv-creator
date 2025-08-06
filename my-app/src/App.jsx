@@ -2,14 +2,26 @@ import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import SingleBtn from './SingleBtn'
 import SingleForm from './SingleForm';
+import { formData } from './FormData';
 
 function App() {
-  const [ formName, setFormName ] = useState('');
+  const [ formInfo, setFormInfo ] = useState({});
+  const initialized = useRef(false);
 
-  const setNameForForm = (name) => {
-    setFormName(name);
+  useEffect(() => {
+  if(!initialized.current) {
+      setFormInfo(formData);
+      initialized.current = true;
   }
+  },[]);
   
+  const addInfo = (name) => {
+    setFormInfo(prev => ({...prev, [name]: formData[name]}))
+    console.log(formInfo, name)
+  }
+
+      
+
   return (
     <>
       <div className='main'>
@@ -18,14 +30,14 @@ function App() {
         </div>
         <div className='information'>
           <h2>Personal information</h2>
-          <SingleForm name='personal' />
+          <SingleForm name='personal' formInfo={formInfo} initialized={initialized}/>
           <h2>Education</h2>
-          <SingleForm name='education' formName={formName}/>
-          <SingleBtn variation='delete' onClick={() => setNameForForm('education')}>Delete</SingleBtn>
-          <SingleBtn variation='add'>Add Education</SingleBtn>
+          <SingleForm name='education' formInfo={formInfo} initialized={initialized}/>
+          <SingleBtn variation='delete' >Delete</SingleBtn>
+          <SingleBtn variation='add' type='submit'  onClick={() => addInfo('education')}>Add Education</SingleBtn>
           <h2>Experience</h2>
-          <SingleForm name='experience' formName={formName}/>
-          <SingleBtn variation='add' onClick={() => setNameForForm('experience')}>Add Experience</SingleBtn>
+          <SingleForm name='experience' formInfo={formInfo} initialized={initialized}/>
+          <SingleBtn variation='add' onClick={() => addInfo('experience')}>Add Experience</SingleBtn>
           <SingleBtn variation='preview'>Preview</SingleBtn>
           <SingleBtn variation='reset'>Reset</SingleBtn>
         </div>

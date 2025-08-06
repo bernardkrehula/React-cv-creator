@@ -1,27 +1,13 @@
-import { useRef, useState, useEffect } from 'react';
-import { formData } from './FormData';
 
-const SingleForm = ({name, formName}) => {
-    const [ formInfo, setFormInfo ] = useState({});
-    const initialized = useRef(false);
-
-    useEffect(() => {
-    if(!initialized.current) {
-        setFormInfo(formData);
-        initialized.current = true;
+const SingleForm = ({name, formInfo, initialized}) => {
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('radi')
     }
-    },[]);
-
-    useEffect(() => {
-        setFormInfo(prev => {
-        const updated = { ...prev };
-        delete updated[formName];
-        return updated;
-    });
-    }, [formName])
       
     return(
-        <form>
+        <form onSubmit={handleSubmit}>
             {initialized.current ? formInfo[name].map((info, index) => {
                 const { id, placeHolder, value} = info;
                 
