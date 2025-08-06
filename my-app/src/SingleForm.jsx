@@ -1,10 +1,10 @@
 
-const SingleForm = ({name, formInfo, initialized}) => {
+const SingleForm = ({name, formInfo, initialized, updateFormInfo}) => {
 
 
     const handleOnChange = (e) => { 
-        const {name, value} = e.target;       
-        console.log(name)
+        const {name: fieldName, value} = e.target;       
+        updateFormInfo(name, fieldName, value);
     }
       
     return(

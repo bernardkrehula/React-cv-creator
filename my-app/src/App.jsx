@@ -29,7 +29,10 @@ function App() {
     }
   }
 
-  updateInfo
+  const updateFormInfo = (formKey, fieldName, value) => {
+   setFormInfo(prev => ({...prev, [formKey]: prev[formKey].map(info => info.name === fieldName ? {...info, value} : info)})); 
+    console.log(formInfo[formKey])
+  };
 
   return (
     <>
@@ -39,13 +42,13 @@ function App() {
         </div>
         <div className='information'>
           <h2>Personal information</h2>
-          <SingleForm name='personal' formInfo={formInfo} initialized={initialized}/>
+          <SingleForm name='personal' formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
           <h2>Education</h2>
           {Object.keys(formInfo)
             .filter((key) => key.startsWith('education'))
             .map((key) => (
             <div key={key}>
-              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized}/>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
               <SingleBtn variation='delete' >Delete</SingleBtn>
             </div>
             ))}
@@ -55,7 +58,7 @@ function App() {
             .filter((key) => key.startsWith('experience'))
             .map((key) => (
             <div key={key}>
-              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized}/>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
               <SingleBtn variation='delete' >Delete</SingleBtn>
             </div>
             ))}
