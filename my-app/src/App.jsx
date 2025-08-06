@@ -7,6 +7,7 @@ import { formData } from './FormData';
 function App() {
   const [ formInfo, setFormInfo ] = useState({});
   const initialized = useRef(false);
+  const index = useRef(0);
 
   useEffect(() => {
   if(!initialized.current) {
@@ -16,12 +17,11 @@ function App() {
   },[]);
   
   const addInfo = (name) => {
-    setFormInfo(prev => ({...prev, [name]: formData[name]}))
-    console.log(formInfo, name)
+    const info = name + (index.current + 1)
+    setFormInfo(prev => ({...prev, [info]: formData[name]}));
   }
 
-      
-
+    
   return (
     <>
       <div className='main'>

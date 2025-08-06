@@ -1,18 +1,18 @@
 
 const SingleForm = ({name, formInfo, initialized}) => {
     
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('radi')
+    const handleOnChange = (e) => {
+        
+        console.log('radi', e.target.value)
     }
       
     return(
-        <form onSubmit={handleSubmit}>
+        <form>
             {initialized.current ? formInfo[name].map((info, index) => {
                 const { id, placeHolder, value} = info;
                 
                 return(
-                    <input key={index} placeholder={placeHolder}></input>
+                    <input key={index} placeholder={placeHolder} onChange={handleOnChange}></input>
                 )
             })
             :
