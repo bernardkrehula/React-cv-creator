@@ -41,9 +41,14 @@ function App() {
       return updated;
     })
   }
-  setTimeout(() => {
-    console.log(formInfo)
-  },1000)
+  const handlePreview = () => {
+    Object.entries(formInfo).forEach(([formProperites, values]) => {
+    console.log(`${formProperites.toUpperCase()}`);
+    values.forEach(value => {
+      console.log(`${value.name}: ${value.value}`);
+    });
+  });
+  }
 
   return (
     <>
@@ -59,7 +64,7 @@ function App() {
             .filter((key) => key.startsWith('education'))
             .map((key) => (
             <div key={key}>
-              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo} deleteFormInfoField={deleteFormInfoField}/>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
               <SingleBtn variation='delete' onClick={() => deleteFormInfoField(key)}>Delete</SingleBtn>
             </div>
             ))}
@@ -69,12 +74,12 @@ function App() {
             .filter((key) => key.startsWith('experience'))
             .map((key) => (
             <div key={key}>
-              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo} deleteFormInfoField={deleteFormInfoField}/>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
               <SingleBtn variation='delete' onClick={() => deleteFormInfoField(key)} type='submit'>Delete</SingleBtn>
             </div>
             ))}
           <SingleBtn variation='add' onClick={() => addInfo('experience')}>Add Experience</SingleBtn>
-          <SingleBtn variation='preview' type='submit'>Preview</SingleBtn>
+          <SingleBtn variation='preview' onClick={handlePreview}>Preview</SingleBtn>
           <SingleBtn variation='reset'>Reset</SingleBtn>
         </div>
       </div>
