@@ -1,7 +1,6 @@
 
 const SingleForm = ({name, formInfo, initialized, updateFormInfo}) => {
 
-
     const handleOnChange = (e) => { 
         const {name: fieldName, value} = e.target;       
         updateFormInfo(name, fieldName, value);  

@@ -49,6 +49,9 @@ function App() {
     });
   });
   }
+  setTimeout(() => {
+    console.log(formInfo)
+  },1000)
 
   return (
     <>
