@@ -50,7 +50,7 @@ function App() {
   });
   }
   setTimeout(() => {
-    console.log(formInfo)
+    /* console.log(formInfo) */
   },1000)
 
   return (

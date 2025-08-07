@@ -5,12 +5,14 @@ const SingleForm = ({name, formInfo, initialized, updateFormInfo}) => {
         const {name: fieldName, value} = e.target;       
         updateFormInfo(name, fieldName, value);  
     }
- 
+    
+    if(initialized.current) console.log(Object.values(formInfo[name]))
+
     return(
         <form>
-            {initialized.current ? formInfo[name].map((info, index) => {
+            {initialized.current ? Object.values(formInfo[name]).map((info, index) => {
                 const { id, name, placeHolder, value} = info;
-                
+                console.log(info)
                 return(
                     <input key={id} name={name} placeholder={placeHolder} onChange={handleOnChange}></input>
                 )
