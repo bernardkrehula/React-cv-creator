@@ -30,8 +30,8 @@ function App() {
   }
 
   const updateFormInfo = (formKey, fieldName, value) => {
-   setFormInfo(prev => ({...prev, [formKey]: prev[formKey].map(info => info.name === fieldName ? {...info, value} : info)})); 
-  };
+/*    setFormInfo(prev => ({...prev, [formKey]: prev[formKey].map(info => info.name === fieldName ? {...info, value} : info)})); 
+ */  };
   const deleteFormInfoField = (name) => {
     setFormInfo(prev => {
       const updated = {...prev};
@@ -42,17 +42,19 @@ function App() {
     })
   }
   const handlePreview = () => {
-    Object.entries(formInfo).forEach(([formProperites, values]) => {
+    /* Object.entries(formInfo).forEach(([formProperites, values]) => {
     console.log(`${formProperites.toUpperCase()}`);
     values.forEach(value => {
       console.log(`${value.name}: ${value.value}`);
     });
-  });
+  }); */
   }
   setTimeout(() => {
-    /* console.log(formInfo) */
+    console.log(formInfo) 
   },1000)
-
+  const handleSubmit = () => {
+    console.log('radi')
+  }
   return (
     <>
       <div className='main'>
@@ -82,7 +84,11 @@ function App() {
             </div>
             ))}
           <SingleBtn variation='add' onClick={() => addInfo('experience')}>Add Experience</SingleBtn>
-          <SingleBtn variation='preview' onClick={handlePreview}>Preview</SingleBtn>
+          <SingleBtn variation='preview' onClick={() => {
+            handlePreview()
+            handleSubmit()
+            }
+          }>Preview</SingleBtn>
           <SingleBtn variation='reset'>Reset</SingleBtn>
         </div>
       </div>

@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SingleForm = ({name, formInfo, initialized, updateFormInfo}) => {
+    const [ inputValue, setInputValue ] = useState({});
 
     const handleOnChange = (e) => { 
-        const {name: fieldName, value} = e.target;       
+        const {name: fieldName, value} = e.target;
+        console.log('radi', e.target, fieldName, value)   
         updateFormInfo(name, fieldName, value);  
     }
     
-   
-
     return(
         <form>
             {initialized.current ? (
