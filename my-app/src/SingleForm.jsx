@@ -6,12 +6,10 @@ const SingleForm = ({name, formInfo, initialized, updateFormInfo, handleSubmit})
     const handleOnChange = (e) => { 
         const {name: fieldName, value} = e.target; 
         const index = e.target.dataset.index
-      /*   console.log('radi', name, index) */
         updateFormInfo(name, fieldName, value, index)   
         
     }
-/*     handleSubmit(inputValue);
- */
+
     return(
         <form>
             {initialized.current ? (

@@ -2,42 +2,42 @@
 export const formData = {
     personal: {
         firstName: {
-            name: 'First Name',
+            name: 'firstName',
             placeHolder: 'First Name',
             value: ''
         },
         lastName: {
-            name: 'Last name',
+            name: 'lastName',
             placeHolder: 'Last name',
             value: ''
         },
         title: {
-            name: 'Title',
+            name: 'title',
             placeHolder: 'Title',
             value: ''
         },
         photo: {
-            name: 'Photo',
+            name: 'photo',
             placeHolder: 'Photo',
             value: ''
         },
         adress: {
-            name: 'Adress',
+            name: 'adress',
             placeHolder: 'Adress',
             value: ''
         },
         phoneNumber: {
-            name: 'Phone number',
+            name: 'phoneNumber',
             placeHolder: 'Phone number',
             value: ''
         },
         email: {
-            name: 'Email',
+            name: 'email',
             placeHolder: 'Email',
             value: ''
         },
         description: {
-            name: 'Description',
+            name: 'description',
             placeHolder: 'Description',
             value: ''
         }
