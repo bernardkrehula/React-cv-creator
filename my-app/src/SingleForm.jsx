@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 
-const SingleForm = ({name, formInfo, initialized, updateFormInfo}) => {
+const SingleForm = ({name, formInfo, initialized, updateFormInfo, handleSubmit}) => {
     const [ inputValue, setInputValue ] = useState({});
 
     const handleOnChange = (e) => { 
-        const {name: fieldName, value} = e.target;
-        console.log('radi', e.target, fieldName, value)   
-        updateFormInfo(name, fieldName, value);  
+        const {name: fieldName, value} = e.target; 
+        const index = e.target.dataset.index
+      /*   console.log('radi', name, index) */
+        updateFormInfo(name, fieldName, value, index)   
+        
     }
-    
+/*     handleSubmit(inputValue);
+ */
     return(
         <form>
             {initialized.current ? (
@@ -25,8 +28,9 @@ const SingleForm = ({name, formInfo, initialized, updateFormInfo}) => {
                         <React.Fragment key={groupIndex}>
                         {Object.entries(infoGroup).map(([key, info]) => {
                             const { id, name: nameInfo, placeHolder, value } = info;
+
                             return (
-                            <input key={id || key} name={nameInfo} placeholder={placeHolder} value={value} onChange={handleOnChange}/>
+                            <input key={id || key} data-index={groupIndex} name={nameInfo} placeholder={placeHolder} value={value} onChange={handleOnChange}/>
                             );
                         })}
                        </React.Fragment>

@@ -29,9 +29,29 @@ function App() {
     }
   }
 
-  const updateFormInfo = (formKey, fieldName, value) => {
-/*    setFormInfo(prev => ({...prev, [formKey]: prev[formKey].map(info => info.name === fieldName ? {...info, value} : info)})); 
- */  };
+  const updateFormInfo = (formKey, fieldName, value, index) => {
+    if(Array.isArray(formInfo[formKey])){
+      setFormInfo(prev => ({
+          ...prev, [formKey]: prev[formKey].map((info, i) => {
+            if(i === Number(index)) {
+              return {
+                ...info, [fieldName]: {
+                ...info[fieldName],
+                value: value
+              }
+              }
+            }
+            else{
+              return info
+            } 
+          })
+        })) 
+      }
+      else{
+        console.log(formData[formKey])
+      }
+    }
+
   const deleteFormInfoField = (name) => {
     setFormInfo(prev => {
       const updated = {...prev};
@@ -50,10 +70,13 @@ function App() {
   }); */
   }
   setTimeout(() => {
-    console.log(formInfo) 
+    console.log(formInfo)  
   },1000)
-  const handleSubmit = () => {
-    console.log('radi')
+  const handleSubmit = (name) => {
+    if(name != undefined){
+
+    }
+    console.log('radi', name)
   }
   return (
     <>
@@ -63,13 +86,13 @@ function App() {
         </div>
         <div className='information'>
           <h2>Personal information</h2>
-          <SingleForm name='personal' formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
+          <SingleForm name='personal' formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo} handleSubmit={handleSubmit}/>
           <h2>Education</h2>
           {Object.keys(formInfo)
             .filter((key) => key.startsWith('education'))
             .map((key) => (
             <div key={key}>
-              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo} handleSubmit={handleSubmit}/>
               <SingleBtn variation='delete' onClick={() => deleteFormInfoField(key)}>Delete</SingleBtn>
             </div>
             ))}
@@ -79,7 +102,7 @@ function App() {
             .filter((key) => key.startsWith('experience'))
             .map((key) => (
             <div key={key}>
-              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
+              <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo} handleSubmit={handleSubmit}/>
               <SingleBtn variation='delete' onClick={() => deleteFormInfoField(key)} type='submit'>Delete</SingleBtn>
             </div>
             ))}

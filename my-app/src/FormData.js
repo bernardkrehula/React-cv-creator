@@ -47,37 +47,37 @@ export const formData = {
         {
             universityName: {
                 id: 1,
-                name: 'University name',
+                name: 'universityName',
                 placeHolder: 'University name',
                 value: ''
             },
             city: {
                 id: 2,
-                name: 'City',
+                name: 'city',
                 placeHolder: 'City',
                 value: ''
             },
             degree: {
                 id: 3,
-                name: 'Degree',
+                name: 'degree',
                 placeHolder: 'Degree',
                 value: ''
             },
             subject: {
                 id: 4,
-                name: 'Subject',
+                name: 'subject',
                 placeHolder: 'Subject',
                 value: ''
             },
             fromDate: {
                 id: 5,
-                name: 'From (dd/mm/yy)',
+                name: 'fromDate',
                 placeHolder: 'From (dd/mm/yy)',
                 value: ''
             },
             toDate: {
                 id: 6,
-                name: 'To (dd/mm/yy)',
+                name: 'fromDate',
                 placeHolder: 'To (dd/mm/yy)',
                 value: ''
             }
@@ -87,31 +87,31 @@ export const formData = {
         {
             position: {
                 id: 1,
-                name: 'Position',
+                name: 'position',
                 placeHolder: 'Position',
                 value: ''
             },
             company: {
                 id: 2,
-                name: 'Company',
+                name: 'company',
                 placeHolder: 'Company',
                 value: ''
             },
             city: {
                 id: 3,
-                name: 'City',
+                name: 'city',
                 placeHolder: 'City',
                 value: ''
             },
             fromDate: {
                 id: 4,
-                name: 'From (dd/mm/yy)',
+                name: 'fromDate',
                 placeHolder: 'From (dd/mm/yy)',
                 value: ''
             },
             toDate: {
                 id: 5,
-                name: 'To (dd/mm/yy)',
+                name: 'toDate',
                 placeHolder: 'To (dd/mm/yy)',
                 value: ''
             }
