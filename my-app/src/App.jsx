@@ -58,18 +58,15 @@ function App() {
                   }
                 }
               )) 
-        console.log(formInfo)
       }
     }
 
-  const deleteFormInfoField = (name) => {
-    setFormInfo(prev => {
-      const updated = {...prev};
-
-      delete updated[name];
-
-      return updated;
-    })
+  const deleteFormInfoField = (name, index) => {
+    setFormInfo(prev => ({
+      ...prev,
+      [name]: prev[name].filter((formObject, i) => i !== index)
+    })) 
+   console.log(formInfo[name], index)
   }
   const handlePreview = () => {
     /* Object.entries(formInfo).forEach(([formProperites, values]) => {
@@ -80,8 +77,8 @@ function App() {
   }); */
   }
   setTimeout(() => {
-/*     console.log(formInfo)  
- */  },1000)
+     console.log(formInfo)  
+  },1000)
 
   return (
     <>
@@ -95,20 +92,20 @@ function App() {
           <h2>Education</h2>
           {Object.keys(formInfo)
             .filter((key) => key.startsWith('education'))
-            .map((key) => (
+            .map((key, index) => (
             <div key={key}>
               <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
-              <SingleBtn variation='delete' onClick={() => deleteFormInfoField(key)}>Delete</SingleBtn>
+              <SingleBtn variation='delete' onClick={() => deleteFormInfoField(key, index)}>Delete</SingleBtn>
             </div>
             ))}
           <SingleBtn variation='add' type='submit' onClick={() => addInfo('education')}>Add Education</SingleBtn>
           <h2>Experience</h2>
           {Object.keys(formInfo)
             .filter((key) => key.startsWith('experience'))
-            .map((key) => (
+            .map((key, index) => (
             <div key={key}>
               <SingleForm key={key} name={key} formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
-              <SingleBtn variation='delete' onClick={() => deleteFormInfoField(key)} type='submit'>Delete</SingleBtn>
+              <SingleBtn variation='delete' onClick={() => deleteFormInfoField(key, index)} type='submit'>Delete</SingleBtn>
             </div>
             ))}
           <SingleBtn variation='add' onClick={() => addInfo('experience')}>Add Experience</SingleBtn>
