@@ -6,9 +6,8 @@ import { formData } from './FormData';
 
 function App() {
   const [ formInfo, setFormInfo ] = useState({});
+  const [ inputValue, resetInputValue ] = useState('');
   const initialized = useRef(false);
-  const indexEducation = useRef(0);
-  const indexExperience = useRef(0);
 
   useEffect(() => {
   if(!initialized.current) {
@@ -18,15 +17,18 @@ function App() {
   },[]);
   
   const addInfo = (name) => {
-    if(name === 'education') {
-      indexEducation.current += 1;
-      const info = name + indexEducation.current;
-      setFormInfo(prev => ({ ...prev, [info]: formData[name]}));
-    } else if(name === 'experience') {
-      indexExperience.current += 1;
-      const info = name + indexExperience.current;
-      setFormInfo(prev => ({ ...prev, [info]: formData[name]}));
-    }
+    setFormInfo((prev) => ({
+    ...prev,
+    [name]: [
+      ...prev[name],
+      Object.fromEntries(
+        Object.entries(formData[name][0]).map(([key, value]) => [
+          key,
+          { ...value, value: '' } 
+        ])
+      )
+    ]
+  }));
   }
 
   const updateFormInfo = (formObjectName, fieldName, newValue, index) => {
@@ -69,16 +71,31 @@ function App() {
    console.log(formInfo[name], index)
   }
   const handlePreview = () => {
-    /* Object.entries(formInfo).forEach(([formProperites, values]) => {
-    console.log(`${formProperites.toUpperCase()}`);
-    values.forEach(value => {
-      console.log(`${value.name}: ${value.value}`);
-    });
-  }); */
+    Object.values(formInfo).forEach(info => {
+      if(Array.isArray(info)){
+        info.map(infoValues => {
+          Object.values(infoValues).map(info => {
+            const { placeHolder, value } = info;
+            console.log(`${placeHolder}: ${value}`)
+          })
+        })
+      }
+      else{
+        Object.values(info).map(infoValue => {
+          const { placeHolder, value } = infoValue;
+          console.log(`${placeHolder}: ${value}`);
+        })
+        }
+      }
+    )
+  
   }
-  setTimeout(() => {
+  const resetDefaultInputValue = () => {
+    resetInputValue()
+  }
+ /*  setTimeout(() => {
      console.log(formInfo)  
-  },1000)
+  },1000) */
 
   return (
     <>
@@ -109,10 +126,7 @@ function App() {
             </div>
             ))}
           <SingleBtn variation='add' onClick={() => addInfo('experience')}>Add Experience</SingleBtn>
-          <SingleBtn variation='preview' onClick={() => {
-            handlePreview()
-            handleSubmit()
-            }
+          <SingleBtn variation='preview' onClick={() => {handlePreview()}
           }>Preview</SingleBtn>
           <SingleBtn variation='reset'>Reset</SingleBtn>
         </div>
