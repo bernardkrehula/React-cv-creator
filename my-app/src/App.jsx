@@ -48,10 +48,17 @@ function App() {
         })) 
       }
       else{
-        /* setFormInfo(prev => ({
-                ...prev, [fieldName]: prev[fieldName]
-              })) */
-        console.log(formInfo[formObjectName])
+        setFormInfo(prev => ({
+                ...prev, [formObjectName]: {
+                  ...prev[formObjectName],
+                    [fieldName]: {
+                      ...prev[formObjectName][fieldName],
+                      value: newValue
+                    }
+                  }
+                }
+              )) 
+        console.log(formInfo)
       }
     }
 
