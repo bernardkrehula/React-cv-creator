@@ -92,7 +92,7 @@ function App() {
     setPreview(prev => !prev);
   }
   const handleBackPreview = () => {
-
+    setPreview(prev => !prev);
   }
   setTimeout(() => {
      console.log(formInfo)  
@@ -143,7 +143,7 @@ function App() {
           }>Preview</SingleBtn>
           <SingleBtn variation='reset'>Reset</SingleBtn>
         </div>
-        {preview ? <SinglePreview formInfo={formInfo}/> : ''}
+        {preview ? <SinglePreview formInfo={formInfo} handleBackPreview={handleBackPreview}/> : ''}
       </div>
     </>
   )
