@@ -31,10 +31,20 @@
     background-color: #d10000;
 }
 .printBtn{
+    display: flex;
     background-color: rgb(6, 170, 6);
     padding: 12px 50px;
 }
+.printBtn:hover{
+    transition: 0.1s ease-in-out;
+    background-color: green;
+}
 .exitBtn{
-    background-color: #d10000;
+    display: flex;
+    background-color: #dc0000;
     padding: 12px 50px;
+}
+.exitBtn:hover{
+    transition: 0.1s ease-in-out;
+    background-color: #c20101;
 }

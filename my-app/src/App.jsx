@@ -8,6 +8,7 @@ import SinglePreview from './SinglePreview';
 function App() {
   const [ formInfo, setFormInfo ] = useState({});
   const [ inputValue, resetInputValue ] = useState('');
+  const [ preview, setPreview ] = useState(false);
   const initialized = useRef(false);
 
   useEffect(() => {
@@ -88,7 +89,10 @@ function App() {
         }
       }
     )
-  
+    setPreview(prev => !prev);
+  }
+  const handleBackPreview = () => {
+
   }
   setTimeout(() => {
      console.log(formInfo)  
@@ -139,7 +143,7 @@ function App() {
           }>Preview</SingleBtn>
           <SingleBtn variation='reset'>Reset</SingleBtn>
         </div>
-        <SinglePreview formInfo={formInfo}/>
+        {preview ? <SinglePreview formInfo={formInfo}/> : ''}
       </div>
     </>
   )

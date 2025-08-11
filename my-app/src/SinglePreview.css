@@ -60,3 +60,6 @@
     position: absolute;
     left: -200px;
 }
+.printBtns svg{
+    margin-right: 10px;
+}
