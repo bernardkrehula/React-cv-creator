@@ -1,0 +1,11 @@
+.main-preview{
+    position: absolute; 
+    top: 10px;
+    transform: translate(245px, 0);
+}
+.main-info{
+    position: absolute;
+    width: 850px;
+    
+    background-color: #44a857;
+}
