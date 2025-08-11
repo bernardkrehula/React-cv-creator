@@ -1,11 +1,62 @@
 .main-preview{
+    display: flex;
     position: absolute; 
     top: 10px;
     transform: translate(245px, 0);
+    box-shadow: 0 0 20px 2000px rgb(0, 0, 0, 0.75);
+}
+.green-space{
+    padding-top: 140px;
+    background-color: #44a857;
 }
 .main-info{
     position: absolute;
     width: 850px;
-    
-    background-color: #44a857;
+    left: 260px;
+}
+.info-space{
+    display: flex;
+    height: 100vh;
+}
+.presonal-details{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(212, 212, 212);
+    margin-right: 0;
+    margin-left: auto;
+    width: 250px; 
+}
+.presonal-details-content{
+    padding: 10px 15px;
+}
+.presonal-details-content h1{
+    font-size: 2.3rem;
+    color: #44a857;
+}
+.presonal-details-content hr{
+    margin-bottom: 10px;
+}
+.presonal-details-content h2{
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+.job-info{
+    display: flex;
+    background-color: white;
+    list-style: none;
+    flex: 1;
+    flex-direction: column;
+    gap: 60px;
+    font-size: 2.2rem;
+    color: #44a857;
+    padding: 20px;
+    padding-right: 30px;
+}
+.printBtns {
+    display: flex;
+    gap: 20px;
+    margin-top: 74px;
+    position: absolute;
+    left: -200px;
 }

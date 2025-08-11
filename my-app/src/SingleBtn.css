@@ -30,3 +30,11 @@
     transition: 0.1s ease-in-out;
     background-color: #d10000;
 }
+.printBtn{
+    background-color: rgb(6, 170, 6);
+    padding: 12px 50px;
+}
+.exitBtn{
+    background-color: #d10000;
+    padding: 12px 50px;
+}
