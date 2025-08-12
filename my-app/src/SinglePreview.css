@@ -16,7 +16,7 @@
 }
 .info-space{
     display: flex;
-    height: 100vh;
+    height: fit-content;
 }
 .presonal-details{
     display: flex;
@@ -47,13 +47,26 @@
     list-style: none;
     flex: 1;
     flex-direction: column;
-    gap: 60px;
+    gap: 25px;
     font-size: 2.2rem;
     color: #44a857;
     padding: 20px;
     padding-right: 30px;
 }
+.job-info li{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.job-info div{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 .job-info h4{
+    color: rgb(77, 77, 77);
+}
+.job-info h5{
     color: black;
 }
 .printBtns {

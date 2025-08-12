@@ -9,11 +9,7 @@ function App() {
   const [ formInfo, setFormInfo ] = useState({});
   const [ inputValue, resetInputValue ] = useState('');
   const [ preview, setPreview ] = useState(false);
-  const [ personalInfo, setPersonalInfo ] = useState({});
-  const [ educationInfo, setEducationInfo ] = useState({});
-  const [ experienceInfo, setExperienceInfo ] = useState({});
 
-    
   const initialized = useRef(false);
 
   useEffect(() => {
