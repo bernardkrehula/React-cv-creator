@@ -11,12 +11,12 @@
 }
 .main-info{
     position: absolute;
+    height: 2000px;
     width: 850px;
     left: 260px;
 }
 .info-space{
     display: flex;
-    height: fit-content;
 }
 .presonal-details{
     display: flex;
@@ -78,4 +78,17 @@
 }
 .printBtns svg{
     margin-right: 10px;
+}
+@media print {
+  .main-info{
+    margin-left: -260px;
+    margin-bottom: -100%;
+  }
+  .presonal-details{
+    margin-right: -50px;
+    margin-bottom: -100%;
+  }
+  .green-space{
+    margin-right: -50px;
+  }
 }
