@@ -53,6 +53,9 @@
     padding: 20px;
     padding-right: 30px;
 }
+.job-info h4{
+    color: black;
+}
 .printBtns {
     display: flex;
     gap: 20px;

@@ -19,27 +19,36 @@ const SinglePreview = ({formInfo, handleBackPreview, personalInfo}) => {
                         <ul className="job-info">
                         {infoNames.map(info => {
                             if(Array.isArray(formInfo[info])){
-                                return formInfo[info].map(innerInfo =>  {
+                                return formInfo[info].map((innerInfo, index) =>  {
                                     return(
-                                        <li>
-                                            <h3>{info}</h3>
+                                        <li key={index}>
+                                            <h3>{info.toUpperCase()}</h3>
+                                            {
+                                                Object.values(innerInfo).map((content, index) => {
+                                                const { name, placeHolder, value } = content;
+                                                    return(
+                                                        <h4 key={index} name={name}>{placeHolder}: {value}</h4>
+                                                    )
+                                            })   
+                                            }
                                         </li>
-                                        Object.values(innerInfo).map((content, index) => {
-                                        const { name, placeHolder, value } = content;
-                                        return(
-                                            <li key={index} name={name}>{placeHolder}: {value}</li>
-                                        )
-                                    })
                                     ) 
                                 })
                             }
                             else{
-                                return Object.values(formInfo[info]).map((innerInfo, index) => {
-                                    const {name, placeHolder, value} = innerInfo;
-                                    return(
-                                        <li key={index} name={name}>{placeHolder}: {value}</li>
-                                    )
-                                })
+                                return(
+                                    <li key={info}>
+                                    <h3>{info.toUpperCase()}</h3>
+                                        {
+                                            Object.values(formInfo[info]).map((innerInfo, index) => {
+                                            const {name, placeHolder, value} = innerInfo;
+                                            return(
+                                                <h4 key={index} name={name}>{placeHolder}: {value}</h4>
+                                            )
+                                            })
+                                        }
+                                    </li>
+                                )
                             }
                         })}
                         {/* <li name='personal' className="description-info">
