@@ -1,10 +1,19 @@
 import SingleBtn from "./SingleBtn";
 import './SinglePreview.css'
+import { useRef, useState } from "react";
+import { useReactToPrint } from "react-to-print";
 
 const SinglePreview = ({formInfo, handleBackPreview}) => {
-    const infoNames = ['personal', 'education', 'experience'];
+    const formKeys = useRef([]);
+    const infoNames = formNames.current;
     const personalDetailsNames = ['adress', 'phoneNumber', 'email'];
-
+    
+    const iterateFormNames = Object.keys(formInfo).reduce((acc, key) => {
+        acc.push(key)
+        formKeys.current = acc;
+        return acc;
+    }, [])
+    
     return(
         <>
             <div className="main-preview">
@@ -61,23 +70,13 @@ const SinglePreview = ({formInfo, handleBackPreview}) => {
                                 <hr />
                                 {Object.values(formInfo['personal']).map(innerInfo => {
                                     const {name, placeHolder, value} = innerInfo;
-                                    return personalDetailsNames.map(details => {
+                                    return personalDetailsNames.map((details, index) => {
                                         if(name === details){
                                             return(
-                                            <h2>{placeHolder}: {value}</h2>
+                                            <h2 key={index}>{placeHolder}: {value}</h2>
                                             )
                                         } 
                                     })
-                                    console.log(placeHolder)
-                                    /* const {adress, phoneNumber, email} = innerInfo;
-                                    console.log(adress)
-                                    return(
-                                        <>
-                                            <h2>Adress: {adress}</h2>
-                                            <h2>Phone Number: {phoneNumber}</h2>
-                                            <h2>Email: {email}</h2>
-                                        </>
-                                    ) */ 
                                 })}
                             </div>
                         </div>
