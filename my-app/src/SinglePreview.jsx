@@ -4,7 +4,7 @@ import './SinglePreview.css'
 import { useRef, useState } from "react";
 import { useReactToPrint } from 'react-to-print';
 
-const SinglePreview = ({formInfo, handleBackPreview}) => {
+const SinglePreview = ({formInfo, handlePreview}) => {
     const formKeys = useRef([]);
     const infoNames = formKeys.current;
     const contentRef = useRef();
@@ -18,13 +18,13 @@ const SinglePreview = ({formInfo, handleBackPreview}) => {
     
     
     const reactToPrintFn = useReactToPrint({ contentRef });
-    
+
     return(
         <>  
             <div className="main-preview">
                 <div className="printBtns">
                     <SingleBtn variation='printBtn' onClick={reactToPrintFn}><svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} className="icon icon-tabler icons-tabler-outline icon-tabler-printer"><path stroke="none" d="M0 0h24v24H0z" /><path d="M17 17h2a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2M17 9V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v4" /><path d="M7 15a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2z" /></svg>Print</SingleBtn>
-                    <SingleBtn variation='exitBtn' onClick={handleBackPreview}><svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-back-up"><path stroke="none" d="M0 0h24v24H0z" /><path d="m9 14-4-4 4-4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>Back</SingleBtn>
+                    <SingleBtn variation='exitBtn' onClick={handlePreview}><svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} className="icon icon-tabler icons-tabler-outline icon-tabler-arrow-back-up"><path stroke="none" d="M0 0h24v24H0z" /><path d="m9 14-4-4 4-4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" /></svg>Back</SingleBtn>
                 </div>
                 <div className="main-info" ref={contentRef}>
                     <div className="green-space"/>

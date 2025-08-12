@@ -7,17 +7,19 @@ import SinglePreview from './SinglePreview';
 
 function App() {
   const [ formInfo, setFormInfo ] = useState({});
-  const [ inputValue, resetInputValue ] = useState('');
   const [ preview, setPreview ] = useState(false);
 
   const initialized = useRef(false);
-
+ 
   useEffect(() => {
   if(!initialized.current) {
       setFormInfo(formData);
       initialized.current = true;
   }
   },[]);
+  const resetInfo = () => {
+    setFormInfo(formData);
+  }
   
   const addInfo = (name) => {
     setFormInfo((prev) => ({
@@ -73,31 +75,8 @@ function App() {
     })) 
   }
   const handlePreview = () => {
-    /* Object.values(formInfo).forEach(info => {
-      if(Array.isArray(info)){
-        info.map(infoValues => {
-          Object.values(infoValues).map(info => {
-            const { placeHolder, value } = info;
-            console.log(`${placeHolder}: ${value}`)
-          })
-        })
-      }
-      else{
-        Object.values(info).map(infoValue => {
-          const { placeHolder, value } = infoValue;
-          console.log(`${placeHolder}: ${value}`);
-        })
-        }
-      }
-    )  */
     setPreview(prev => !prev);
   }
-  const handleBackPreview = () => {
-    setPreview(prev => !prev);
-  }
-  /* setTimeout(() => {
-     console.log(formInfo)  
-  },1000)  */
 
   return (
     <>
@@ -125,9 +104,9 @@ function App() {
           ))}
           <SingleBtn variation='add' onClick={() => addInfo('experience')}>Add Experience</SingleBtn>
           <SingleBtn variation='preview' onClick={() => {handlePreview()}}>Preview</SingleBtn>
-          <SingleBtn variation='reset'>Reset</SingleBtn>
+          <SingleBtn variation='reset' onClick={resetInfo}>Reset</SingleBtn>
         </div>
-        {preview ? <SinglePreview formInfo={formInfo} handleBackPreview={handleBackPreview}/> : ''}
+        {preview ? <SinglePreview formInfo={formInfo} handlePreview={handlePreview}/> : ''}
       </div>
     </>
   )

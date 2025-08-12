@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
-const SingleForm = ({name, formInfo, initialized, updateFormInfo}) => {
-
+const SingleForm = ({name, formInfo, initialized, updateFormInfo, }) => {
+    
     const handleOnChange = (e) => { 
         const {name: fieldName, value} = e.target; 
         const index = e.target.dataset.index;
@@ -15,7 +15,7 @@ const SingleForm = ({name, formInfo, initialized, updateFormInfo}) => {
                     Object.values(formInfo[name]).map((info, index) => {
                     const { name: nameInfo, placeHolder } = info;
                     return (
-                        <input key={index} name={nameInfo} placeholder={placeHolder} onChange={handleOnChange}/>
+                        <input key={index} value={info.value ?? ''} name={nameInfo} placeholder={placeHolder} onChange={handleOnChange}/>
                     );
                     })
                 ) : (
@@ -26,7 +26,7 @@ const SingleForm = ({name, formInfo, initialized, updateFormInfo}) => {
                             const { id, name: nameInfo, placeHolder } = info;
 
                             return (
-                            <input key={id || key} data-index={groupIndex} name={nameInfo} placeholder={placeHolder} onChange={handleOnChange}/>
+                            <input key={id || key} value={info.value ?? ''} data-index={groupIndex} name={nameInfo} placeholder={placeHolder} onChange={handleOnChange}/>
                             );
                         })}
                        </React.Fragment>
