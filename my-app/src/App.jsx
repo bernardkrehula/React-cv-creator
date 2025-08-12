@@ -9,6 +9,11 @@ function App() {
   const [ formInfo, setFormInfo ] = useState({});
   const [ inputValue, resetInputValue ] = useState('');
   const [ preview, setPreview ] = useState(false);
+  const [ personalInfo, setPersonalInfo ] = useState({});
+  const [ educationInfo, setEducationInfo ] = useState({});
+  const [ experienceInfo, setExperienceInfo ] = useState({});
+
+    
   const initialized = useRef(false);
 
   useEffect(() => {
@@ -72,7 +77,7 @@ function App() {
     })) 
   }
   const handlePreview = () => {
-    Object.values(formInfo).forEach(info => {
+    /* Object.values(formInfo).forEach(info => {
       if(Array.isArray(info)){
         info.map(infoValues => {
           Object.values(infoValues).map(info => {
@@ -88,15 +93,15 @@ function App() {
         })
         }
       }
-    )
+    )  */
     setPreview(prev => !prev);
   }
   const handleBackPreview = () => {
     setPreview(prev => !prev);
   }
-  setTimeout(() => {
+  /* setTimeout(() => {
      console.log(formInfo)  
-  },1000) 
+  },1000)  */
 
   return (
     <>
@@ -110,37 +115,20 @@ function App() {
           <h2>Education</h2>
           {Array.isArray(formInfo.education) && formInfo.education.map((_, index) => (
             <div key={index} className="education-item">
-              <SingleForm
-                name="education"
-                formInfo={formInfo}
-                initialized={initialized}
-                updateFormInfo={updateFormInfo}
-                index={index}  
-              />
-              <SingleBtn variation="delete" onClick={() => deleteFormInfoField('education', index)}>
-                Delete
-              </SingleBtn>
+              <SingleForm name="education" formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo} index={index}/>
+              <SingleBtn variation="delete" onClick={() => deleteFormInfoField('education', index)}>Delete</SingleBtn>
             </div>
           ))}
           <SingleBtn variation='add' type='submit' onClick={() => addInfo('education')}>Add Education</SingleBtn>
           <h2>Experience</h2>
           {Array.isArray(formInfo.experience) && formInfo.experience.map((_, index) => (
             <div key={index} className="experience-item">
-              <SingleForm
-                name="experience"
-                formInfo={formInfo}
-                initialized={initialized}
-                updateFormInfo={updateFormInfo}
-                index={index}
-              />
-              <SingleBtn variation="delete" onClick={() => deleteFormInfoField('experience', index)}>
-                Delete
-              </SingleBtn>
+              <SingleForm name="experience" formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo} index={index}/>
+              <SingleBtn variation="delete" onClick={() => deleteFormInfoField('experience', index)}>Delete</SingleBtn>
             </div>
           ))}
           <SingleBtn variation='add' onClick={() => addInfo('experience')}>Add Experience</SingleBtn>
-          <SingleBtn variation='preview' onClick={() => {handlePreview()}
-          }>Preview</SingleBtn>
+          <SingleBtn variation='preview' onClick={() => {handlePreview()}}>Preview</SingleBtn>
           <SingleBtn variation='reset'>Reset</SingleBtn>
         </div>
         {preview ? <SinglePreview formInfo={formInfo} handleBackPreview={handleBackPreview}/> : ''}
