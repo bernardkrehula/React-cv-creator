@@ -4,6 +4,14 @@ import SingleBtn from './SingleBtn'
 import SingleForm from './SingleForm';
 import { formData } from './FormData';
 import SinglePreview from './SinglePreview';
+import PhotoImport from './PhotoImport';
+
+//Zadatak: dodat mogucnost da se slika uploduje s kompjutora
+//Zakomentarisati photo iz fromInfo objekta
+//Napraviti poseban useState za photo 
+//Napraviti posbenu komponentu za input photo
+//Ako je slika provajdana prikazi ju u cv preview
+//Prikazati sliku umjesto ove anonimne slike
 
 function App() {
   const [ formInfo, setFormInfo ] = useState({});
@@ -87,6 +95,7 @@ function App() {
         <div className='information'>
           <h2>Personal information</h2>
           <SingleForm name='personal' formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
+          <PhotoImport />
           <h2>Education</h2>
           {Array.isArray(formInfo.education) && formInfo.education.map((_, index) => (
             <div key={index} className="education-item">

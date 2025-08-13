@@ -16,11 +16,11 @@ export const formData = {
             placeHolder: 'Title',
             value: ''
         },
-        photo: {
+        /* photo: {
             name: 'photo',
             placeHolder: 'Photo',
             value: ''
-        },
+        }, */
         adress: {
             name: 'adress',
             placeHolder: 'Adress',

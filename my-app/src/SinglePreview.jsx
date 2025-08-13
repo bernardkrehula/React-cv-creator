@@ -40,7 +40,10 @@ const SinglePreview = ({formInfo, handlePreview}) => {
                                                 Object.values(innerInfo).map((content, index) => {
                                                 const { name, placeHolder, value } = content;
                                                     return(
-                                                        <h4 key={index} name={name}>{placeHolder}: {value}</h4>
+                                                        <div key={index} name={name}>
+                                                            <h4>{placeHolder}:</h4>
+                                                            <h5>{value}</h5>
+                                                        </div>
                                                     )
                                             })   
                                             }
