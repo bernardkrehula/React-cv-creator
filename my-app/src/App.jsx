@@ -16,6 +16,7 @@ import PhotoImport from './PhotoImport';
 function App() {
   const [ formInfo, setFormInfo ] = useState({});
   const [ preview, setPreview ] = useState(false);
+  const [ photo, setPhoto ] = useState(null);
 
   const initialized = useRef(false);
  
@@ -84,6 +85,11 @@ function App() {
   }
   const handlePreview = () => {
     setPreview(prev => !prev);
+    selectPhoto();
+  }
+  const selectPhoto = (selectedPhoto) => {
+    setPhoto(selectedPhoto);
+    console.log(selectedPhoto)
   }
 
   return (
@@ -95,7 +101,7 @@ function App() {
         <div className='information'>
           <h2>Personal information</h2>
           <SingleForm name='personal' formInfo={formInfo} initialized={initialized} updateFormInfo={updateFormInfo}/>
-          <PhotoImport />
+          <PhotoImport selectPhoto={selectPhoto}/>
           <h2>Education</h2>
           {Array.isArray(formInfo.education) && formInfo.education.map((_, index) => (
             <div key={index} className="education-item">
