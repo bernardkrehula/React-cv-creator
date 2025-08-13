@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SingleForm = ({name, formInfo, initialized, updateFormInfo, }) => {
+const SingleForm = ({name, formInfo, initialized, updateFormInfo}) => {
     
     const handleOnChange = (e) => { 
         const {name: fieldName, value} = e.target; 

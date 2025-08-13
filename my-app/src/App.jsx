@@ -85,11 +85,9 @@ function App() {
   }
   const handlePreview = () => {
     setPreview(prev => !prev);
-    selectPhoto();
   }
   const selectPhoto = (selectedPhoto) => {
     setPhoto(selectedPhoto);
-    console.log(selectedPhoto)
   }
 
   return (
@@ -121,7 +119,7 @@ function App() {
           <SingleBtn variation='preview' onClick={() => {handlePreview()}}>Preview</SingleBtn>
           <SingleBtn variation='reset' onClick={resetInfo}>Reset</SingleBtn>
         </div>
-        {preview ? <SinglePreview formInfo={formInfo} handlePreview={handlePreview}/> : ''}
+        {preview ? <SinglePreview formInfo={formInfo} photo={photo} handlePreview={handlePreview}/> : ''}
       </div>
     </>
   )
