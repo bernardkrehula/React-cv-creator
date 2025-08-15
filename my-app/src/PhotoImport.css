@@ -1,0 +1,12 @@
+.imgImport {
+    display: none;
+}
+.photo{
+     background-size: cover;
+    background-position: center;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 8px;
+    cursor: pointer;
+}
+ 

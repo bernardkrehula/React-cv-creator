@@ -89,7 +89,9 @@ function App() {
   const selectPhoto = (selectedPhoto) => {
     setPhoto(selectedPhoto);
   }
-
+  //Popraviti css da bude isti kao od nemanje
+  //Staviti ga u formInfo objekat
+  
   return (
     <>
       <div className='main'>

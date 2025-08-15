@@ -1,3 +1,4 @@
+import './PhotoImport.css'
 
 const PhotoImport = ({selectPhoto}) => {
     const handleFileChange = (e) => {
@@ -7,7 +8,10 @@ const PhotoImport = ({selectPhoto}) => {
 
     return(
         <>
-            <input type="file" accept="image/*" onChange={handleFileChange} />
+            <label className='photo'>
+                <input className='imgImport' type="file" accept="image/*" onChange={handleFileChange} />
+                Photo
+            </label>
         </>
     )
 }
